@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sarthak:550420AR@cluster0.l6dbltz.mongodb.net/hotel_reservation?retryWrites=true&w=majority&appName=Cluster0';
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'https://hotel-reservation-system-five.vercel.app/', 
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes

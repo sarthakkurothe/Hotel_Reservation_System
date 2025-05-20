@@ -4,6 +4,9 @@ import HotelView from './components/HotelView';
 import BookingSummary from './components/BookingSummary';
 import './styles.css';
 
+// Using the deployed backend URL
+const API_URL = 'https://hotel-reservation-system-dhz9.onrender.com';
+
 function App() {
   const [hotelData, setHotelData] = useState({
     floors: [],
@@ -20,7 +23,7 @@ function App() {
   const fetchHotelData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/rooms');
+      const response = await fetch(`${API_URL}/api/rooms`);
       if (!response.ok) {
         throw new Error('Failed to fetch hotel data');
       }
@@ -37,7 +40,7 @@ function App() {
   const handleBookRooms = async (numberOfRooms) => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/rooms/book', {
+      const response = await fetch(`${API_URL}/api/rooms/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +67,7 @@ function App() {
   const handleRandomizeOccupancy = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/rooms/randomize', {
+      const response = await fetch(`${API_URL}/api/rooms/randomize`, {
         method: 'POST',
       });
       
@@ -84,7 +87,7 @@ function App() {
   const handleResetBookings = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/rooms/reset', {
+      const response = await fetch(`${API_URL}/api/rooms/reset`, {
         method: 'POST',
       });
       
